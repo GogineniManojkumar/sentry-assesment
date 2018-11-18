@@ -12,14 +12,14 @@ x-defaults: &defaults
   volumes:
     - sentry-data:/var/lib/sentry/files
   networks:
-    - manoj_assesment
+    - manoj_assessment
 
 services:
   smtp:
     restart: unless-stopped
     image: tianon/exim4
     networks:
-    - manoj_assesment
+    - manoj_assessment
     
   memcached:
     restart: unless-stopped
@@ -27,14 +27,14 @@ services:
     ports:
       - 11211
     networks:
-    - manoj_assesment
+    - manoj_assessment
   redis:
     restart: unless-stopped
     image: redis:3.2-alpine
     ports:
       - 6379
     networks:
-    - manoj_assesment
+    - manoj_assessment
 
   postgres:
     restart: unless-stopped
@@ -44,7 +44,7 @@ services:
     volumes:
       - sentry-postgres:/var/lib/postgresql/data
     networks:
-    - manoj_assesment
+    - manoj_assessment
     env_file: .env_postgres
 
   web:
@@ -67,5 +67,5 @@ volumes:
     sentry-postgres:
       external: true
 networks:
-  manoj_assesment:
+  manoj_assessment:
     driver: bridge
